@@ -13,7 +13,7 @@ Convention:  `.(ff|fontface).svg`
 ## Install
 
 ```
-docpad install yourpluginname
+docpad install fontface
 ```
 
 
