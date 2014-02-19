@@ -25,7 +25,7 @@
         "url": "https://github.com/matevzmihalic/docpad-plugin-fontface.git"
     },
     "engines": {
-        "node": ">=0.8"
+        "node": ">=0.10"
     },
     "peerDependencies": {
         "docpad": "6"
