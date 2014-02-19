@@ -53,7 +53,7 @@ module.exports = (testers) ->
                     header_offset += buffer.readUInt16LE(header_offset) + 4
                     header_offset += buffer.readUInt16LE(header_offset) + 4
 
-                    offsets.push {start: header_offset+68, length: 4}
+                    offsets.push {start: header_offset+66, length: 4}
                     offsets.push {start: header_offset+216, length: 8}
                     offsets.push {start: header_offset+232, length: 16}
 

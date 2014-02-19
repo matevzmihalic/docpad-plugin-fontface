@@ -8,13 +8,25 @@ Currently only supported input format is svg.
 
 Convention:  `.(ff|fontface).svg`
 
-
-
 ## Install
 
 ```
 docpad install fontface
 ```
+
+##Configuration
+
+You can set which output files should be generated in `docpad.coffee`:
+
+```
+plugins:
+  fontface:
+    output: ['ttf', 'svg', 'eot', 'woff', 'css']
+```
+
+##TODO
+
+* Support more input formats (at least ttf would be nice)
 
 
 Licensed under the incredibly [permissive](http://en.wikipedia.org/wiki/Permissive_free_software_licence) [MIT License](http://creativecommons.org/licenses/MIT/)

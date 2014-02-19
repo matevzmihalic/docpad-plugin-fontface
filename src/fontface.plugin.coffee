@@ -2,7 +2,7 @@
 module.exports = (BasePlugin) ->
     fs = require('fs')
     mkdirp = require('mkdirp')
-    
+
     # Define Plugin
     class FontFacePlugin extends BasePlugin
         # Plugin name
@@ -16,7 +16,7 @@ module.exports = (BasePlugin) ->
             docpad.log 'debug', 'Rendering ttf'
             
             svg2ttf = require('svg2ttf')
-            ttf = svg2ttf file.buffer.toString('utf-8'), {}
+            ttf = svg2ttf file.buffer.toString('utf-8'), {familyname: file.attributes.basename, fullname: file.attributes.basename}
             if write
                 fs.writeFileSync file.attributes.outPath + '.ttf', new Buffer(ttf.buffer)
 
@@ -46,16 +46,16 @@ module.exports = (BasePlugin) ->
 
             css = ""
             if 'eot' in @config.fontface.output
-                css += "\n    src: url('#{ file.attributes.basename }.eot');\n    src: url('#{ file.attributes.basename }.eot?#iefix') format('embedded-opentype')"
+                css += "\n    src: url('#{ file.attributes.outFilename }.eot');\n    src: url('#{ file.attributes.outFilename }.eot?#iefix') format('embedded-opentype')"
             if 'woff' in @config.fontface.output
                 css += ',\n' if css.length
-                css += "    url('#{ file.attributes.basename }.woff') format('woff')"
+                css += "    url('#{ file.attributes.outFilename }.woff') format('woff')"
             if 'ttf' in @config.fontface.output
                 css += ',\n' if css.length
-                css += "    url('#{ file.attributes.basename }.ttf') format('truetype')"
+                css += "    url('#{ file.attributes.outFilename }.ttf') format('truetype')"
             if 'svg' in @config.fontface.output
                 css += ',\n' if css.length
-                css += "    url('#{ file.attributes.basename }.svg##{file.attributes.basename}') format('svg')"
+                css += "    url('#{ file.attributes.outFilename }.svg##{file.attributes.basename}') format('svg')"
             
             css = """
             @font-face {
